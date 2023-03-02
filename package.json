@@ -1,24 +1,16 @@
 {
   "name": "homie-api",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "./node_modules/.bin/nodemon"
+    "start": "node ./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SeppeBe1/homie-API.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/SeppeBe1/homie-API/issues"
-  },
-  "homepage": "https://github.com/SeppeBe1/homie-API#readme",
   "dependencies": {
-    "express": "^4.18.2",
-    "nodemon": "^2.0.20"
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "pug": "2.0.0-beta11"
   }
 }

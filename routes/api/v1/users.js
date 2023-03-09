@@ -11,4 +11,12 @@ router.get("/",userController.getUser);
 
 router.post("/", userController.createUser);
 
+// PUT /api/vi/users
+
+router.put("/:id", userController.updateUser);
+
+// DELETE /api/vi/users
+
+router.delete("/:id", userController.deleteUser);
+
 module.exports = router;

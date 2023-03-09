@@ -6,7 +6,10 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+
 var userRouter = require('./routes/api/v1/users');
+var houseRouter = require('./routes/api/v1/house');
+var beHomieRouter = require('./routes/api/v1/beHomie');
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://127.0.0.1:27017/homie');
@@ -25,7 +28,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/house', houseRouter);
+app.use('/api/v1/behomie', beHomieRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

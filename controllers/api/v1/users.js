@@ -1,37 +1,32 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
-const userSchema = new Schema({
-    firstName: String,
-    lastName: String,
-});
+const User = require("../../../models/User")
 
-const User = mongoose.model("User", userSchema);
-
-const getUser = (req,res)=> {
-    res.json({
-        "status":"succes",
-        "data":{
-            "user":[]
+function getUser(req, res) {
+    const  firstName  = "Seppe";
+  
+    User.find({ firstName })
+      .then(user => {
+        if (!user) {
+          res.status(404).json({ error: 'User not found' });
+        } else {
+          res.json(user);
         }
-    });
+      })
+      .catch(err => res.status(500).json(err));
+  }
+
+function createUser(req, res) {
+  const firstName = "Seppe";
+  const lastName = "Bellens"
+  const newUser = new User({
+    firstName,
+    lastName,
+  });
+
+  newUser.save()
+    .then(user => res.json(user))
+    .catch(err => res.status(500).json(err));
 }
 
-const createUser = (req,res)=> {
-
-    let user = new User();
-    user.firstName = "Seppe";
-    user.lastName = "Bellens";
-    user.save((err, doc) =>{
-        if(!err){
-            res.json({
-                "status":"succes",
-                "data":{
-                    "user": doc
-                }
-            });
-        }
-    })
-}
 
 module.exports.getUser = getUser;
 module.exports.createUser = createUser;

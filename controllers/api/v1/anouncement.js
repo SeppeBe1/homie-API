@@ -1,5 +1,4 @@
 const Anouncement = require("../../../models/Anouncement");
-const User = require("../../../models/Anouncement")
 
 function getAnouncement(req, res) {
     const  type  = "";

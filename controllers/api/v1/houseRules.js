@@ -14,7 +14,7 @@ function getHouseRule(req, res) {
   }
 
 function createHouseRule(req, res) {
-  const description = "Den afwas moet gebeuren na het eten.";
+  const description = "Test het via netlify.";
   const house_id = "1";
 
   

@@ -15,9 +15,9 @@ function getUser(req, res) {
   }
 
 function createUser(req, res) {
-  const firstName = "Seppe";
-  const lastName = "Bellens";
-  const email = "Seppe@gmail.com";
+  const firstName = "ji";
+  const lastName = "pla";
+  const email = "jipla@gmail.com";
   const password = "test";
   const house_Id = "1";
   const houseAdmin = false;

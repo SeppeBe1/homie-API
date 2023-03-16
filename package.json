@@ -1,12 +1,12 @@
 {
   "name": "homie-api",
-  "version": "0.0.0",
+  "version": "14.20.1",
   "private": true,
   "scripts": {
     "start": "./node_modules/.bin/nodemon ./bin/www"
   },
   "dependencies": {
-    "bson": "^5.0.1",
+    "bson": "14.20.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",

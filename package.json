@@ -5,6 +5,10 @@
   "scripts": {
     "start": "./node_modules/.bin/nodemon ./bin/www"
   },
+
+  "engines": {
+    "node": ">=14 <15"
+  },
   "dependencies": {
     "bson": "^5.0.1",
     "cookie-parser": "~1.4.4",

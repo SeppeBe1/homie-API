@@ -8,6 +8,7 @@ const houseSchema = new Schema({
     street: String,
     streetNumber: Number,
     profilePic: String,
+    invitationlink: String,
 
 });
 

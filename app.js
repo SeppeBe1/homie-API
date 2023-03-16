@@ -10,9 +10,7 @@ var usersRouter = require('./routes/users');
 var userRouter = require('./routes/api/v1/users');
 var houseRouter = require('./routes/api/v1/house');
 var beHomieRouter = require('./routes/api/v1/beHomie');
-var eventRouter = require('./routes/api/v1/anouncements/eventActivity');
-var taskRouter = require('./routes/api/v1/anouncements/task');
-var normalAnouncementRouter = require('./routes/api/v1/anouncements/normalAnouncement');
+var anouncementRouter = require('./routes/api/v1/anouncement');
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://127.0.0.1:27017/homie');
@@ -35,9 +33,8 @@ app.use('/users', usersRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/house', houseRouter);
 app.use('/api/v1/behomie', beHomieRouter);
-app.use('/api/v1/anouncements/event', eventRouter);
-app.use('/api/v1/anouncements/task', taskRouter);
-app.use('/api/v1/anouncements/normalAnouncement', normalAnouncementRouter);
+app.use('/api/v1/anouncement', anouncementRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

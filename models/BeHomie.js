@@ -9,6 +9,8 @@ const beHomieSchema = new Schema({
     postalcode: Number,
     street: String,
     dateCreate: Date,
+    likes: Number,
+    liked: Boolean,
 
 });
 

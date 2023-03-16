@@ -34,7 +34,7 @@ function createAnouncement(req, res) {
   const dateCreated = "";
   const beHomieNotificationTime = "";
   
-  const newUser = new User({
+  const newAnouncement = new Anouncement({
     type,
     description,
     creator_id,

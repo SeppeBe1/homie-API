@@ -9,8 +9,8 @@ var usersRouter = require('./routes/users');
 
 var userRouter = require('./routes/api/v1/users');
 var houseRouter = require('./routes/api/v1/house');
-var beHomieRouter = require('./routes/api/v1/beHomie');
 var anouncementRouter = require('./routes/api/v1/anouncement');
+var houseRuleRouter = require('./routes/api/v1/houseRules');
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://127.0.0.1:27017/homie');
@@ -32,8 +32,8 @@ app.use('/users', usersRouter);
 
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/house', houseRouter);
-app.use('/api/v1/behomie', beHomieRouter);
 app.use('/api/v1/anouncement', anouncementRouter);
+app.use('/api/v1/houseRules', houseRuleRouter);
 
 
 // catch 404 and forward to error handler

@@ -3,7 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var cors = require('cors')
+var cors = require('cors');
+const config = require('config');
 
 // var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
@@ -14,7 +15,10 @@ var anouncementRouter = require('./routes/api/v1/anouncement');
 var houseRuleRouter = require('./routes/api/v1/houseRules');
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/homie');
+mongoose.connect(process.env.dboconn || config.get('Database.conn'));
+
+console.log(config.get('Database'))
+console.log(process.env.node_env)
 
 var app = express();
 

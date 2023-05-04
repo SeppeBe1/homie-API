@@ -17,9 +17,9 @@ var houseRuleRouter = require('./routes/api/v1/houseRules');
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://thisIsTheAdmin:IsV4qho1jQLB440f@cluster0.jjxi6xr.mongodb.net/?retryWrites=true&w=majority');
 
-console.log(config.get('Database'))
-console.log(process.env.node_env);
-console.log('werkt');
+// console.log(config.get('Database'))
+// console.log(process.env.node_env);
+// console.log('werkt');
 
 var app = express();
 

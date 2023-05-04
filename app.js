@@ -16,6 +16,7 @@ var houseRuleRouter = require('./routes/api/v1/houseRules');
 
 const mongoose = require('mongoose');
 mongoose.connect(process.env.dboconn || config.get('Database.conn'));
+<p>Yo</p>
 
 var app = express();
 

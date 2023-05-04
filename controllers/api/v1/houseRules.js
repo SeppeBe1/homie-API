@@ -14,7 +14,7 @@ function getHouseRule(req, res) {
   }
 
 function createHouseRule(req, res) {
-  const description = "Test het via netlify.";
+  const description = "Test het via Vercel.";
   const house_id = "1";
 
   

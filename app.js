@@ -18,7 +18,8 @@ const mongoose = require('mongoose');
 mongoose.connect(process.env.dboconn || config.get('Database.conn'));
 
 console.log(config.get('Database'))
-console.log(process.env.node_env)
+console.log(process.env.node_env);
+console.log('werkt');
 
 var app = express();
 
@@ -55,6 +56,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
+  console.log('werkt ni');
   res.render('error');
 });
 

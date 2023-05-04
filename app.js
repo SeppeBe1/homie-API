@@ -15,7 +15,7 @@ var anouncementRouter = require('./routes/api/v1/anouncement');
 var houseRuleRouter = require('./routes/api/v1/houseRules');
 
 const mongoose = require('mongoose');
-mongoose.connect(process.env.dboconn || config.get('Database.conn'));
+mongoose.connect('mongodb+srv://thisIsTheAdmin:IsV4qho1jQLB440f@cluster0.jjxi6xr.mongodb.net/?retryWrites=true&w=majority');
 
 console.log(config.get('Database'))
 console.log(process.env.node_env);

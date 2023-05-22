@@ -40,7 +40,7 @@ app.use(cors());
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/house', houseRouter);
 app.use('/api/v1/anouncement',anouncementRouter);
-app.use('/api/v1/houserules', houseRuleRouter);
+app.use('/api/v1/houserules',  passport.authenticate('jwt',{session:false}), houseRuleRouter);
 
 // passport.authenticate('jwt', { session: false })
 

@@ -1,21 +1,23 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const passportLocalMongoose = require('passport-local-mongoose');
 
-const userSchema = new Schema({
-    firstName: String,
-    lastName: String,
-    email: String,
-    password: String,
-    house_Id:  Number,
-    houseAdmin: Boolean,
-    profilePic: String,
-    serverAdmin: Boolean,
-    notification: Boolean,
-    nightmode: Boolean,
-    language: String,
-    shareData: Boolean,
-});
+const User = new Schema({});
 
-const User = mongoose.model("User", userSchema);
+User.plugin(passportLocalMongoose);
 
-module.exports = User;
+module.exports = mongoose.model('User', User);
+
+
+    // firstName: String,
+    // lastName: String,
+    // email: String,
+    // password: String,
+    // house_Id:  Number,
+    // houseAdmin: Boolean,
+    // profilePic: String,
+    // serverAdmin: Boolean,
+    // notification: Boolean,
+    // nightmode: Boolean,
+    // language: String,
+    // shareData: Boolean,

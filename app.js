@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
 const config = require('config');
+const passport = require('./passport/passport');
 
 // var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
@@ -15,8 +16,10 @@ var anouncementRouter = require('./routes/api/v1/anouncement');
 var houseRuleRouter = require('./routes/api/v1/houseRules');
 
 const mongoose = require('mongoose');
-mongoose.connect(process.env.dboconn || config.get('Database.conn'));
-<p>Yo</p>
+//online
+// mongoose.connect(process.env.dboconn || config.get('Database.conn'));
+//localhost
+mongoose.connect('mongodb://127.0.0.1:27017/homie');
 
 var app = express();
 
@@ -36,8 +39,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/house', houseRouter);
-app.use('/api/v1/anouncement', anouncementRouter);
-app.use('/api/v1/houseRules', houseRuleRouter);
+app.use('/api/v1/anouncement',anouncementRouter);
+app.use('/api/v1/houserules', houseRuleRouter);
+
+// passport.authenticate('jwt', { session: false })
 
 
 // catch 404 and forward to error handler

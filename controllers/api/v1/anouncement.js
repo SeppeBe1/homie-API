@@ -3,7 +3,7 @@ const Anouncement = require("../../../models/Anouncement");
 function getAnouncement(req, res) {
     const  type  = "";
   
-    Anouncement.find({ anouncement })
+    Anouncement.find({ })
       .then(anouncement => {
         if (!anouncement) {
           res.status(404).json({ error: 'Anouncement not found' });
@@ -25,7 +25,7 @@ function createAnouncement(req, res) {
   const forWho_id = "";
   const amount = "";
   const percentage = "";
-  const paid = "";
+  const paid = false;
   const receiptImage = "";
 
   const behomieTime = "";

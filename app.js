@@ -17,9 +17,9 @@ var houseRuleRouter = require('./routes/api/v1/houseRules');
 
 const mongoose = require('mongoose');
 //online
-// mongoose.connect(process.env.dboconn || config.get('Database.conn'));
+mongoose.connect(process.env.dboconn || config.get('Database.conn'));
 //localhost
-mongoose.connect('mongodb://127.0.0.1:27017/homie');
+// mongoose.connect('mongodb://127.0.0.1:27017/homie');
 
 var app = express();
 
@@ -37,9 +37,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use('/users', usersRouter);
 
 app.use(cors());
-app.use('/api/v1/users', userRouter);
-app.use('/api/v1/house', houseRouter);
-app.use('/api/v1/anouncement',anouncementRouter);
+app.use('/api/v1/users',  userRouter);
+app.use('/api/v1/house', passport.authenticate('jwt',{session:false}), houseRouter);
+app.use('/api/v1/anouncement', passport.authenticate('jwt',{session:false}),anouncementRouter);
 app.use('/api/v1/houserules',  passport.authenticate('jwt',{session:false}), houseRuleRouter);
 
 // passport.authenticate('jwt', { session: false })

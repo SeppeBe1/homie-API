@@ -39,8 +39,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 app.use('/api/v1/users',  userRouter);
 app.use('/api/v1/house', passport.authenticate('jwt',{session:false}), houseRouter);
-app.use('/api/v1/anouncement', passport.authenticate('jwt',{session:false}),anouncementRouter);
-app.use('/api/v1/houserules',  passport.authenticate('jwt',{session:false}), houseRuleRouter);
+app.use('/api/v1/anouncement',anouncementRouter);
+app.use('/api/v1/houserules', houseRuleRouter);
 
 // passport.authenticate('jwt', { session: false })
 

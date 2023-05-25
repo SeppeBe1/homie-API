@@ -4,54 +4,76 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 
 const signup = async (req, res, next) => {
-    let username = req.body.username;
+
+    let firstname = req.body.firstname;
+    let lastname = req.body.lastname;
+    let email = req.body.email;
     let password = req.body.password;
+    let houseId = "";
+
+    const existingUser = await User.findOne({ email: email });
+    if (existingUser) {
+      return res.json({
+        status: "error",
+        message: "Email already exists."
+      });
+    }
+
 
     const user = new User({
-        username: username
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        houseId : houseId
     });
 
     await user.setPassword(password);
     await user.save().then(result => {
         console.log(result);
+
         let token = jwt.sign({
             uid: result._id,
-            username: result.username,
+            email: result.email,
         }, config.get('jwt.secret'));
+
         res.json({
             "status":"succes",
             "data": {
+                "userId": result._id,
+                "firstname": firstname,
+                "lastname": lastname,
+                "email": result.email,
                 "token": token,
-                
+                "houseId": houseId
             }
         });
-
-    }).catch(error =>{
+    }).catch(error => {
         res.json({
             "status":"error",
             "message":error,
         });
-    });
+    }); 
 };
 
 const login = async (req, res, next) => {
-    const  user  = await User.authenticate()(req.body.username, req.body.password).then(result => {
+    const  user  = await User.authenticate()(req.body.email, req.body.password).then(result => {
         if(!result.user){
             return res.json({
                 "status": "failed",
                 "message": "login failed"
             })
-
         }
         let token =jwt.sign({
             uid: result.user._id,
-            username: result.user.username,
+            email: result.user.email,
         }, config.get('jwt.secret'));
 
-        res.json({
+        return res.json({
             "status":"succes",
             "data":{
-                "user": result,
+                "userId": result.user._id,
+                "token": token,
+                "houseId": result.user.houseId,
             }
         });
 

@@ -4,7 +4,7 @@ const anouncementController = require("../../../controllers/api/v1/anouncement")
 
 // GET /api/vi/users
 
-router.get("/",anouncementController.getAnouncement);
+router.get("/:houseId",anouncementController.getAnnouncement);
 
 
 // POST /api/vi/users

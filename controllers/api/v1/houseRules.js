@@ -1,66 +1,100 @@
-const HouseRule = require("../../../models/HouseRules")
+const Houserule = require("../../../models/Houserules")
 
 function getHouseRule(req, res) {
   
-    HouseRule.find({ })
-      .then(houseRule => {
-        if (!houseRule) {
-          res.status(404).json({ error: 'houseRule not found' });
+    Houserule.find({ })
+      .then(houserule => {
+        if (!houserule) {
+          res.status(404).json({ error: 'houserule not found' });
         } else {
-          res.json(houseRule);
+          res.json(houserule);
         }
       })
       .catch(err => res.status(500).json(err));
   }
-
-function createHouseRule(req, res) {
-  const description = "Test het via Vercel.";
-  const house_id = "1";
-
   
-  const newHouseRule = new HouseRule({
-    description,
-    house_id,
 
-  });
-
-  newHouseRule.save()
-    .then(houseRule => res.json(houseRule))
-    .catch(err => res.status(500).json(err));
-}
-
-
-function updateHouseRule(req, res) {
-    const  {id}  = req.params;
+  const createHouseRule = async (req, res, next) => {
+    const description = req.body.description;
+    const houseId = req.body.houseId;
   
-    HouseRule.findByIdAndUpdate(id,  {description: "Doe den afwas maar niet"}  , { new: true })
-      .then(updateHouseRule => {
-        if (!updateHouseRule) {
-          res.status(404).json({ error: 'houseRule not found' });
+    const houserule = new Houserule({
+      description: description,
+      houseId: houseId,
+
+    });
+  
+    await houserule.save().then(result => {
+        console.log(result);
+  
+        res.json({
+            "status":"succes",
+            "result": result,
+            "data": {
+                "description": result.description,
+                "houseId": result.houseId,
+            }
+        });
+    }).catch(error => {
+        res.json({
+            "status":"error",
+            "message":error,
+        });
+    }); 
+  };
+
+
+  function updateHouseRule(req, res) {
+    const { description, houseId } = req.params;
+    const newDescription = req.body.description;
+  
+    Houserule.findOneAndUpdate({ description: description, houseId: houseId },{ description: newDescription})
+      .then(result => {
+        if (!result) {
+          res.status(404).json({ 
+            "status":"failed",
+            "status":"does not exist",
+
+          });
         } else {
-          res.json(updateHouseRule);
+          res.json({
+            "status":"succes",
+            "status":result,
+          });
         }
       })
-      .catch(err => res.status(500).json(err));
+      .catch(error => res.status(500).json({ 
+        "status":"failed",
+        "result": error,
+      }));
   }
 
-  function delereHouseRule(req, res) {
-    const { id } = req.params;
+  function deleteHouseRule(req, res) {
+    const { description, houseId } = req.params;
   
-    HouseRule.findByIdAndDelete(id)
-      .then(delereHouseRule => {
-        if (!delereHouseRule) {
-          res.status(404).json({ error: 'houseRule not found' });
+    Houserule.findOneAndDelete({ description: description, houseId: houseId })
+      .then(deleteHouseRule => {
+        if (!deleteHouseRule) {
+          res.status(404).json({ 
+            "status":"failed",
+            "status":"does not exist",
+
+          });
         } else {
-          res.json(delereHouseRule);
+          res.json({
+            "status":"succes",
+          });
         }
       })
-      .catch(err => res.status(500).json(err));
+      .catch(error => res.status(500).json({ 
+        "status":"failed",
+        "result": error,
+      }));
   }
 
 
 module.exports.getHouseRule = getHouseRule;
 module.exports.createHouseRule = createHouseRule;
 module.exports.updateHouseRule = updateHouseRule;
-module.exports.delereHouseRule = delereHouseRule;
+module.exports.deleteHouseRule = deleteHouseRule;
 

@@ -1,22 +1,24 @@
 const express = require("express");
 const router = express.Router();
-const userController = require("../../../controllers/api/v1/house");
+const houseController = require("../../../controllers/api/v1/house");
 
 // GET /api/vi/users
 
-router.get("/",userController.getHouse);
+router.get("/",houseController.getHouses);
+router.get("/:id",houseController.getSpecificHouse);
+router.get("/code/:houseCode",houseController.getHouseWithCode);
 
 
 // POST /api/vi/users
 
-router.post("/", userController.createHouse);
+router.post("/", houseController.createHouse);
 
 // PUT /api/vi/users
 
-router.put("/:id", userController.updateHouse);
+router.put("/:id", houseController.updateHouse);
 
 // DELETE /api/vi/users
 
-router.delete("/:id", userController.deleteHouse);
+router.delete("/:id", houseController.deleteHouse);
 
 module.exports = router;

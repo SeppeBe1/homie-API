@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 const AnouncementSchema = new Schema({
     type: String,
     description: String,
-    creator_id: Number,
-    house_id: Number,
+    creatorId: String,
+    houseId: String,
 
     item: String,
     forWho_id:Number,
@@ -15,8 +15,8 @@ const AnouncementSchema = new Schema({
     receiptImage: String,
 
     behomieTime: Date,
-    datePlanned: Date,
-    dateCreated: Date,
+    datePlanned: String,
+    dateCreated: String,
     beHomieNotificationTime: Date,
 });
 

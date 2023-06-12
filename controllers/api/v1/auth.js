@@ -24,7 +24,7 @@ const signup = async (req, res, next) => {
         firstname: firstname,
         lastname: lastname,
         email: email,
-        houseId : houseId
+        houseId : "",
     });
 
     await user.setPassword(password);
@@ -44,7 +44,7 @@ const signup = async (req, res, next) => {
                 "lastname": lastname,
                 "email": result.email,
                 "token": token,
-                "houseId": houseId
+                "houseId": "",
             }
         });
     }).catch(error => {

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const houseruleController = require("../../../controllers/api/v1/houserules");
+const houseruleController = require("../../../controllers/api/v1/houseRules");
 
 // GET /api/vi/users
 

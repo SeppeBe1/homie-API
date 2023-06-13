@@ -51,8 +51,8 @@ function getUser(req, res) {
           res.json({
             "status": "success",
             "result": results.map(result => ({
-              "type": result.firstname,
-              "description": result.lastname,
+              "firstname": result.firstname,
+              "lastname": result.lastname,
               "houseId": result.houseId,
               // Add other properties you want to include
             }))

@@ -1,4 +1,4 @@
-const Houserule = require("../../../models/Houserules")
+const Houserule = require("../../../models/HouseRules")
 
 function getHouseRule(req, res) {
   

@@ -14,6 +14,7 @@ var userRouter = require('./routes/api/v1/users');
 var houseRouter = require('./routes/api/v1/house');
 var anouncementRouter = require('./routes/api/v1/anouncement');
 var houseRuleRouter = require('./routes/api/v1/houseRules');
+var photoRouter = require('./routes/api/v1/photos');
 
 const mongoose = require('mongoose');
 //online
@@ -41,6 +42,7 @@ app.use('/api/v1/users',  userRouter);
 app.use('/api/v1/house', passport.authenticate('jwt',{session:false}), houseRouter);
 app.use('/api/v1/anouncement', passport.authenticate('jwt',{session:false}), anouncementRouter);
 app.use('/api/v1/houserules', passport.authenticate('jwt',{session:false}), houseRuleRouter);
+app.use('/api/v1/photo', passport.authenticate('jwt',{session:false}), photoRouter);
 
 // passport.authenticate('jwt', { session: false })
 
@@ -58,6 +60,8 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
+  console.log(err.status);
+  console.log(err);
   console.log('werkt ni');
   res.render('error');
 });

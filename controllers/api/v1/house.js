@@ -23,7 +23,8 @@ function getHouses(req, res) {
       })
       .catch(err => res.status(500).json({
         "status":"error",
-        "message":err}));
+        "message":err
+      }));
   }
 
 
@@ -45,7 +46,6 @@ function getHouses(req, res) {
       })
       .catch(err => res.status(500).json({
         "status":"failed",
-        "message":err
       }));
   }
 

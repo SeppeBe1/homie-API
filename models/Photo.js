@@ -6,6 +6,7 @@ const Photoschema = new Schema({
     userId: String,
     houseId: String,
     dateTaken: String,
+    houseName: String,
     likes: Number,
     city: String,
 

@@ -7,9 +7,17 @@ function getAllPhotos(req, res) {
     Photo.find({ })
       .then(result => {
         if (!result) {
-          res.status(404).json({ error: 'result not found' });
+          res.status(404).json({
+            "status": "failed",
+            "error": error,
+
+          });
         } else {
-          res.json(result);
+          res.json({
+            "status": "success",
+            "result": result,
+
+          });
         }
       })
       .catch(err => res.status(500).json(err));
@@ -30,6 +38,7 @@ function getPhotoUser(req, res) {
             "result": results.map(result => ({
               "image": result.image,
               "userId": result.userId,
+              "houseName": result.houseName,
               "houseId": result.houseId,
               "dateTaken": result.dateTaken,
               // Add other properties you want to include
@@ -59,6 +68,7 @@ function getPhotoHouse(req, res) {
             "image": result.image,
             "userId": result.userId,
             "houseId": result.houseId,
+            "houseName": result.houseName,
             "dateTaken": result.dateTaken,
             // Add other properties you want to include
           }))
@@ -79,8 +89,10 @@ function createPhoto(req, res) {
   const houseId = req.body.houseId;
   const dateTaken = req.body.dateTaken;
 
+  const houseName = req.body.houseName;
   const likes = req.body.likes;
   const city = req.body.city;
+  
 
   
   const newPhoto = new Photo({
@@ -89,6 +101,7 @@ function createPhoto(req, res) {
     houseId: houseId,
     dateTaken: dateTaken,
 
+    houseName: houseName,
     likes: likes,
     city: city,
   });

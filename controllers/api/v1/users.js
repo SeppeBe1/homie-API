@@ -29,6 +29,8 @@ function getUser(req, res) {
                 "userId": result._id,
                 "firstname": result.firstname,
                 "lastname": result.lastname,
+                "email": result.email,
+                "phonenumber": result.phonenumber,
                 "houseId": result.houseId,
             }
         });
@@ -67,8 +69,9 @@ function getUser(req, res) {
 
 function updateUser(req, res) {
   const { id } = req.params;
+  const {email, phonenumber} = req.body;
 
-  User.findByIdAndUpdate(id, { houseId: req.body.houseId }, { new: true })
+  User.findByIdAndUpdate(id, { houseId: req.body.houseId, email, phonenumber }, { new: true })
     .then(result => {
       if (!result) {
         res.status(404).json({

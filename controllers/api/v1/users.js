@@ -1,18 +1,31 @@
 const User = require("../../../models/User")
 
 function getUser(req, res) {
-    const  firstName  = "Seppe";
-  
-    User.find({ firstName })
-      .then(user => {
-        if (!user) {
-          res.status(404).json({ error: 'User not found' });
-        } else {
-          res.json(user);
-        }
-      })
-      .catch(err => res.status(500).json(err));
-  }
+  User.find()
+    .then(result => {
+      if (!result) {
+        res.status(404).json({ 
+        "status":"failed",
+        "result":result });
+      } else {
+        res.json({
+          "status":"succes",
+          "result": result,
+          "data": {
+              "_id": result._id,
+              "firstname": result.firstname,
+              "lastname": result.lastname,
+              "email": result.email,
+              "houseCode": result.houseCode,
+          }
+      });
+      }
+    })
+    .catch(err => res.status(500).json({
+      "status":"error",
+      "message":err
+    }));
+}
 
   function getSpecificUser(req, res) {
     const { id } = req.params;
@@ -68,7 +81,7 @@ function getUser(req, res) {
 function updateUser(req, res) {
   const { id } = req.params;
 
-  User.findByIdAndUpdate(id, { houseId: req.body.houseId }, { new: true })
+  User.findByIdAndUpdate(id, { houseId: req.body.houseId, telNr: req.body.telNr }, { new: true })
     .then(result => {
       if (!result) {
         res.status(404).json({

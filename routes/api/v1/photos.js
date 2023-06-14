@@ -15,7 +15,7 @@ router.post("/", photocontroller.createPhoto);
 
 // PUT /api/vi/users
 
-router.post("/:id", photocontroller.changeLikes);
+router.put("/:id", photocontroller.changeLikes);
 
 
 // DELETE /api/vi/users

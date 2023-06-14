@@ -39,6 +39,8 @@ function getPhotoUser(req, res) {
               "image": result.image,
               "userId": result.userId,
               "houseName": result.houseName,
+              "description": result.description,
+              "city": result.city,
               "houseId": result.houseId,
               "dateTaken": result.dateTaken,
               // Add other properties you want to include
@@ -68,6 +70,8 @@ function getPhotoHouse(req, res) {
             "image": result.image,
             "userId": result.userId,
             "houseId": result.houseId,
+            "description": result.description,
+            "city": result.city,
             "houseName": result.houseName,
             "dateTaken": result.dateTaken,
             // Add other properties you want to include
@@ -88,7 +92,7 @@ function createPhoto(req, res) {
   const userId = req.body.userId;
   const houseId = req.body.houseId;
   const dateTaken = req.body.dateTaken;
-
+  const description = req.body.description;
   const houseName = req.body.houseName;
   const likes = req.body.likes;
   const city = req.body.city;
@@ -100,6 +104,7 @@ function createPhoto(req, res) {
     userId: userId,
     houseId: houseId,
     dateTaken: dateTaken,
+    description: description,
 
     houseName: houseName,
     likes: likes,

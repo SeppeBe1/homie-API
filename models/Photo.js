@@ -4,11 +4,13 @@ const Schema = mongoose.Schema;
 const Photoschema = new Schema({
     image: String,
     userId: String,
+    description: String,
     houseId: String,
     dateTaken: String,
     houseName: String,
     likes: Number,
     city: String,
+    telNr: String,
 
     
 });

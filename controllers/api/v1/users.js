@@ -32,6 +32,10 @@ function getUser(req, res) {
                 "email": result.email,
                 "phonenumber": result.phonenumber,
                 "houseId": result.houseId,
+                "profilePic": result.profilePic,
+                "availability": result.availability,
+                "emailPublic": result.emailPublic,
+                "phonePublic": result.phonePublic,
             }
         });
         }
@@ -69,9 +73,10 @@ function getUser(req, res) {
 
 function updateUser(req, res) {
   const { id } = req.params;
-  const {email, phonenumber} = req.body;
+  const {email, phonenumber, emailPublic, phonePublic, profilePic, availability} = req.body;
 
-  User.findByIdAndUpdate(id, { houseId: req.body.houseId, email, phonenumber }, { new: true })
+  
+  User.findByIdAndUpdate(id, { houseId: req.body.houseId, email, emailPublic, phonenumber, phonePublic, profilePic: req.body.profilePic, availability }, { new: true })
     .then(result => {
       if (!result) {
         res.status(404).json({

@@ -97,4 +97,3 @@ module.exports.getHouseRule = getHouseRule;
 module.exports.createHouseRule = createHouseRule;
 module.exports.updateHouseRule = updateHouseRule;
 module.exports.deleteHouseRule = deleteHouseRule;
-

@@ -15,7 +15,7 @@ const AnouncementSchema = new Schema({
     receiptImage: String,
 
     behomieTime: Date,
-    datePlanned: String,
+    datePlanned: Date,
     dateCreated: String,
     beHomieNotificationTime: Date,
 });

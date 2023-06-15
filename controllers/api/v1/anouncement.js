@@ -33,9 +33,11 @@ function getAnnouncement(req, res) {
 function createAnouncement(req, res) {
 
   const type = req.body.type;
+  const activity = req.body.type;
   const description = req.body.description;
   const creatorId = req.body.creatorId;
   const houseId = req.body.houseId;
+  const participants = req.body.participants;
 
   const item = req.body.item;
   const forWho_id = req.body.forWho_id;
@@ -50,28 +52,37 @@ function createAnouncement(req, res) {
   const beHomieNotificationTime = req.body.beHomieNotificationTime;
   
   const newAnouncement = new Anouncement({
-    type: type ,
-    description: description,
-    creatorId: creatorId,
-    houseId: houseId,
+    "type": type ,
+    "activity": activity,
+    "description": description,
+    "creatorId": creatorId,
+    "houseId": houseId,
+    "participants": participants,
 
-    item: item,
-    forWho_id: forWho_id,
-    amount: amount,
-    percentage: percentage,
-    paid: paid,
-    receiptImage: receiptImage,
+    "item": item,
+   "forWho_id": forWho_id,
+    "amount": amount,
+    "percentage": percentage,
+    "paid": paid,
+    "receiptImage": receiptImage,
 
-    behomieTime: behomieTime,
-    datePlanned: datePlanned,
-    dateCreated: dateCreated,
-    beHomieNotificationTime: beHomieNotificationTime,
+    "behomieTime": behomieTime,
+    "datePlanned": datePlanned,
+    "dateCreated": dateCreated,
+    "beHomieNotificationTime": beHomieNotificationTime,
   });
 
    newAnouncement.save().then(result => {
 
     res.json({
         "status":"succes",
+        "result": result,
+        "data": {
+          "type": result.type,
+          "description": result.description,
+          "activity": result.activity,
+          "participants": result.participants,
+        }
     });
 }).catch(error => {
     res.json({

@@ -2,7 +2,7 @@ const Houserule = require("../../../models/HouseRules")
 
 function getHouseRule(req, res) {
   
-    Houserule.find({ })
+    Houserule.find({ id })
       .then(houserule => {
         if (!houserule) {
           res.status(404).json({ error: 'houserule not found' });

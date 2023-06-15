@@ -14,6 +14,7 @@ function getAnnouncement(req, res) {
         res.json({
           "status": "success",
           "result": results.map(result => ({
+            "_id": result._id,
             "type": result.type,
             "description": result.description,
             "houseId": result.houseId,

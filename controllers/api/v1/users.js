@@ -42,6 +42,7 @@ function getUser(req, res) {
                 "userId": result._id,
                 "firstname": result.firstname,
                 "lastname": result.lastname,
+                "email": result.email,
                 "houseId": result.houseId,
             }
         });

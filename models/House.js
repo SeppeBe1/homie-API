@@ -10,6 +10,7 @@ const houseSchema = new Schema({
     profilePic: String,
     houseCode: Number,
 
+
 });
 
 const House = mongoose.model("House", houseSchema);

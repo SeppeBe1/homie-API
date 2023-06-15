@@ -8,6 +8,7 @@ const User = new Schema({
         email: String,
         houseId: String,
         password: String,
+        phonenumber: String,
         houseAdmin: Boolean,
         profilePic: String,
         serverAdmin: Boolean,
@@ -15,6 +16,10 @@ const User = new Schema({
         nightmode: Boolean,
         language: String,
         shareData: Boolean,
+        availability: String,
+        status: String,
+        emailPublic: Boolean,
+        phonePublic: Boolean,
 });
 
 User.plugin(passportLocalMongoose, { usernameField: 'email' });

@@ -17,6 +17,14 @@ function getAnnouncement(req, res) {
             "type": result.type,
             "description": result.description,
             "houseId": result.houseId,
+            "eventName": result.eventName,
+            "participants": result.participants,
+            "location": result.location,
+            "datePlanned": result.datePlanned,
+            "dateCreated": result.dateCreated,
+            "hour": result.hour,
+            "image": result.image,
+            "invitationMessage": result.invitationMessage
             // Add other properties you want to include
           }))
         });
@@ -47,7 +55,14 @@ function createAnouncement(req, res) {
   const datePlanned = req.body.datePlanned;
   const dateCreated = req.body.dateCreated;
   const beHomieNotificationTime = req.body.beHomieNotificationTime;
-  
+
+  const eventName= req.body.eventName;
+  const participants= req.body.participants;
+  const location= req.body.location;
+  const hour= req.body.hour;
+  const image= req.body.image;
+  const invitationMessage= req.body.invitationMessage;
+
   const newAnouncement = new Anouncement({
     type: type ,
     description: description,
@@ -65,6 +80,13 @@ function createAnouncement(req, res) {
     datePlanned: datePlanned,
     dateCreated: dateCreated,
     beHomieNotificationTime: beHomieNotificationTime,
+
+    eventName: eventName,
+    participants: participants,
+    location: location,
+    hour: hour,
+    image: image,
+    invitationMessage: invitationMessage,
   });
 
    newAnouncement.save().then(result => {

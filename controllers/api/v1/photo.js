@@ -88,10 +88,12 @@ function getPhotoHouse(req, res) {
 
 function createPhoto(req, res) {
 
+  const dateNow = new Date()
+
   const image = req.body.image;
   const userId = req.body.userId;
   const houseId = req.body.houseId;
-  const dateTaken = req.body.dateTaken;
+  const dateTaken = dateNow;
   const description = req.body.description;
   const houseName = req.body.houseName;
   const likes = req.body.likes;

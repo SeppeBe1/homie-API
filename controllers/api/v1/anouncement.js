@@ -12,29 +12,20 @@ function getAnnouncement(req, res) {
         });
       } else {
         res.json({
-<<<<<<< HEAD
           status: "success",
           result: results.map((result) => ({
             _id: result._id,
             type: result.type,
             description: result.description,
             houseId: result.houseId,
-=======
-          "status": "success",
-          "result": results.map(result => ({
-            "_id": result._id,
-            "type": result.type,
-            "description": result.description,
-            "houseId": result.houseId,
-            "eventName": result.eventName,
-            "participants": result.participants,
-            "location": result.location,
-            "datePlanned": result.datePlanned,
-            "dateCreated": result.dateCreated,
-            "hour": result.hour,
-            "image": result.image,
-            "invitationMessage": result.invitationMessage
->>>>>>> 37279e00ee51c80556d87674e1914b124372aec6
+            eventName: result.eventName,
+            participants: result.participants,
+            location: result.location,
+            datePlanned: result.datePlanned,
+            dateCreated: result.dateCreated,
+            hour: result.hour,
+            image: result.image,
+            invitationMessage: result.invitationMessage,
             // Add other properties you want to include
           })),
         });
@@ -68,11 +59,11 @@ function createAnouncement(req, res) {
   const dateCreated = req.body.dateCreated;
   const beHomieNotificationTime = req.body.beHomieNotificationTime;
 
-  const eventName= req.body.eventName;
-  const location= req.body.location;
-  const hour= req.body.hour;
-  const image= req.body.image;
-  const invitationMessage= req.body.invitationMessage;
+  const eventName = req.body.eventName;
+  const location = req.body.location;
+  const hour = req.body.hour;
+  const image = req.body.image;
+  const invitationMessage = req.body.invitationMessage;
 
   const newAnouncement = new Anouncement({
     type: type,
@@ -81,7 +72,6 @@ function createAnouncement(req, res) {
     creatorId: creatorId,
     houseId: houseId,
     participants: participants,
-    
 
     item: item,
     forWho_id: forWho_id,
@@ -90,12 +80,10 @@ function createAnouncement(req, res) {
     paid: paid,
     receiptImage: receiptImage,
 
-
-    "behomieTime": behomieTime,
-    "datePlanned": datePlanned,
-    "dateCreated": dateCreated,
-    "beHomieNotificationTime": beHomieNotificationTime,
-
+    behomieTime: behomieTime,
+    datePlanned: datePlanned,
+    dateCreated: dateCreated,
+    beHomieNotificationTime: beHomieNotificationTime,
 
     eventName: eventName,
     participants: participants,

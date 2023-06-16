@@ -42,7 +42,7 @@ function getAnnouncement(req, res) {
 function createAnouncement(req, res) {
 
   const type = req.body.type;
-  const activity = req.body.type;
+  const activity = req.body.activity;
   const description = req.body.description;
   const creatorId = req.body.creatorId;
   const houseId = req.body.houseId;

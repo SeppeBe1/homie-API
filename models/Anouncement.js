@@ -19,6 +19,12 @@ const AnouncementSchema = new Schema({
   datePlanned: Date,
   dateCreated: String,
   beHomieNotificationTime: Date,
+
+  eventName: String,
+  hour: String,
+  invitationMessage: String,
+  participants: String,
+  image: String,
 });
 
 const Anouncement = mongoose.model("Anouncement", AnouncementSchema);

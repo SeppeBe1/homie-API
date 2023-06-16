@@ -12,10 +12,12 @@ function getUser(req, res) {
           "status":"succes",
           "result": result,
           "data": {
-              "_id": result._id,
+            "userId": result._id, 
+              "userId": result.userId,
               "firstname": result.firstname,
               "lastname": result.lastname,
               "email": result.email,
+              "phone": result.phone,
               "houseCode": result.houseCode,
           }
       });
@@ -43,6 +45,7 @@ function getUser(req, res) {
                 "firstname": result.firstname,
                 "lastname": result.lastname,
                 "email": result.email,
+                "phonenumber": result.phonenumber,
                 "houseId": result.houseId,
             }
         });
@@ -67,6 +70,8 @@ function getUser(req, res) {
             "result": results.map(result => ({
               "firstname": result.firstname,
               "lastname": result.lastname,
+              "phone": result.phone,
+              "email": result.email,
               "houseId": result.houseId,
               // Add other properties you want to include
             }))
@@ -81,8 +86,8 @@ function getUser(req, res) {
 
 function updateUser(req, res) {
   const { id } = req.params;
-
-  User.findByIdAndUpdate(id, { houseId: req.body.houseId, telNr: req.body.telNr, profilePic: req.body.profilePic }, { new: true })
+  
+  User.findByIdAndUpdate(id, { houseId: req.body.houseId, email, emailPublic, phonenumber, phonePublic, profilePic: req.body.profilePic, availability }, { new: true })
     .then(result => {
       if (!result) {
         res.status(404).json({

@@ -26,6 +26,7 @@ function getAnnouncement(req, res) {
             hour: result.hour,
             image: result.image,
             invitationMessage: result.invitationMessage,
+            activity: result.activity,
             // Add other properties you want to include
           })),
         });
@@ -45,7 +46,6 @@ function createAnouncement(req, res) {
   const description = req.body.description;
   const creatorId = req.body.creatorId;
   const houseId = req.body.houseId;
-  const participants = req.body.participants;
 
   const item = req.body.item;
   const forWho_id = req.body.forWho_id;
@@ -60,6 +60,7 @@ function createAnouncement(req, res) {
   const beHomieNotificationTime = req.body.beHomieNotificationTime;
 
   const eventName = req.body.eventName;
+  const participants = req.body.participants;
   const location = req.body.location;
   const hour = req.body.hour;
   const image = req.body.image;
@@ -84,7 +85,6 @@ function createAnouncement(req, res) {
     datePlanned: datePlanned,
     dateCreated: dateCreated,
     beHomieNotificationTime: beHomieNotificationTime,
-
     eventName: eventName,
     participants: participants,
     location: location,
@@ -103,8 +103,8 @@ function createAnouncement(req, res) {
           type: result.type,
           description: result.description,
           activity: result.activity,
+          datePlanned: result.datePlanned,
           participants: result.participants,
-          dateCreated: result.dateCreated,
         },
       });
     })

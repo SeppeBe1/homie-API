@@ -20,7 +20,6 @@ const AnouncementSchema = new Schema({
   dateCreated: String,
   beHomieNotificationTime: Date,
 
-  eventName: String,
   hour: String,
   invitationMessage: String,
   participants: String,

@@ -59,7 +59,6 @@ function createAnouncement(req, res) {
   const dateCreated = req.body.dateCreated;
   const beHomieNotificationTime = req.body.beHomieNotificationTime;
 
-  const eventName = req.body.eventName;
   const participants = req.body.participants;
   const location = req.body.location;
   const hour = req.body.hour;
@@ -85,7 +84,6 @@ function createAnouncement(req, res) {
     datePlanned: datePlanned,
     dateCreated: dateCreated,
     beHomieNotificationTime: beHomieNotificationTime,
-    eventName: eventName,
     participants: participants,
     location: location,
     hour: hour,

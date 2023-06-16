@@ -1,37 +1,36 @@
-const Houserule = require("../../../models/HouseRules")
+const Houserule = require("../../../models/HouseRules");
 
 function getHouseRule(req, res) {
   const { houseId } = req.params;
   Houserule.find({ houseId: houseId })
-  .then(results => {
-    if (results.length === 0) {
-       res.status(404).json({ "status": "Houserules not found" });
-    }else {
-      res.json({
-        "status": "success",
-        "result": results.map(result => ({
-          "type": result.type,
-          "description": result.description,
-          "houseId": result.houseId,
-        }))
-      });
-    }
-})
-.catch(err => res.status(500).json({
-  "status": "error",
-  "message": err
-}));
+    .then((results) => {
+      if (results.length === 0) {
+        res.status(404).json({ status: "Houserules not found" });
+      } else {
+        res.json({
+          status: "success",
+          result: results.map((result) => ({
+            description: result.description,
+            houseId: result.houseId,
+          })),
+        });
+      }
+    })
+    .catch((err) =>
+      res.status(500).json({
+        status: "error",
+        message: err,
+      })
+    );
 }
-
-  
 
 const createHouseRule = async (req, res, next) => {
   const description = req.body.description;
   const houseId = req.body.houseId;
 
   const houserule = new Houserule({
-    "description": description,
-    "houseId": houseId,
+    description: description,
+    houseId: houseId,
   });
 
   try {
@@ -39,74 +38,75 @@ const createHouseRule = async (req, res, next) => {
     console.log(result);
 
     res.json({
-      "status": "success",
-      "result": result,
-      "data": {
-        "description": result.description,
-        "houseId": result.houseId,
-      }
+      status: "success",
+      result: result,
+      data: {
+        description: result.description,
+        houseId: result.houseId,
+      },
     });
   } catch (error) {
     res.status(500).json({
-      "status": "error",
-      "message": error,
+      status: "error",
+      message: error,
     });
   }
 };
-
-
 
 function updateHouseRule(req, res) {
   const { description, houseId } = req.params;
   const newDescription = req.body.description;
 
-  Houserule.findOneAndUpdate({ description: description, houseId: houseId },{ description: newDescription})
-    .then(result => {
+  Houserule.findOneAndUpdate(
+    { description: description, houseId: houseId },
+    { description: newDescription }
+  )
+    .then((result) => {
       if (!result) {
-        res.status(404).json({ 
-          "status":"failed",
-          "status":"does not exist",
-
+        res.status(404).json({
+          status: "failed",
+          status: "does not exist",
         });
       } else {
         res.json({
-          "status":"succes",
-          "status":result,
+          status: "succes",
+          status: result,
         });
       }
     })
-    .catch(error => res.status(500).json({ 
-      "status":"failed",
-      "result": error,
-    }));
+    .catch((error) =>
+      res.status(500).json({
+        status: "failed",
+        result: error,
+      })
+    );
 }
 
 function deleteHouseRule(req, res) {
   const { description, houseId } = req.params;
 
   Houserule.findOneAndDelete({ description: description, houseId: houseId })
-    .then(deleteHouseRule => {
+    .then((deleteHouseRule) => {
       if (!deleteHouseRule) {
-        res.status(404).json({ 
-          "status":"failed",
-          "status":"does not exist",
-
+        res.status(404).json({
+          status: "failed",
+          status: "does not exist",
         });
       } else {
         res.json({
-          "status":"succes",
+          status: "succes",
         });
       }
     })
-    .catch(error => res.status(500).json({ 
-      "status":"failed",
-      "result": error,
-    }));
+    .catch((error) =>
+      res.status(500).json({
+        status: "failed",
+        result: error,
+      })
+    );
 }
-
 
 module.exports.getHouseRule = getHouseRule;
 module.exports.createHouseRule = createHouseRule;
 module.exports.updateHouseRule = updateHouseRule;
 module.exports.deleteHouseRule = deleteHouseRule;
-

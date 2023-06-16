@@ -24,6 +24,7 @@ const AnouncementSchema = new Schema({
     invitationMessage: String,
     participants: String,
     image: String,
+    activity: String
 });
 
 const Anouncement = mongoose.model("Anouncement", AnouncementSchema);

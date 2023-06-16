@@ -25,7 +25,8 @@ function getAnnouncement(req, res) {
             "dateCreated": result.dateCreated,
             "hour": result.hour,
             "image": result.image,
-            "invitationMessage": result.invitationMessage
+            "invitationMessage": result.invitationMessage,
+            "activity": result.activity
             // Add other properties you want to include
           }))
         });
@@ -41,11 +42,10 @@ function getAnnouncement(req, res) {
 function createAnouncement(req, res) {
 
   const type = req.body.type;
-  const activity = req.body.type;
+  const activity = req.body.activity;
   const description = req.body.description;
   const creatorId = req.body.creatorId;
   const houseId = req.body.houseId;
-  const participants = req.body.participants;
 
   const item = req.body.item;
   const forWho_id = req.body.forWho_id;
@@ -81,12 +81,6 @@ function createAnouncement(req, res) {
     "paid": paid,
     "receiptImage": receiptImage,
 
-<<<<<<< HEAD
-    "behomieTime": behomieTime,
-    "datePlanned": datePlanned,
-    "dateCreated": dateCreated,
-    "beHomieNotificationTime": beHomieNotificationTime,
-=======
     behomieTime: behomieTime,
     datePlanned: datePlanned,
     dateCreated: dateCreated,
@@ -98,7 +92,6 @@ function createAnouncement(req, res) {
     hour: hour,
     image: image,
     invitationMessage: invitationMessage,
->>>>>>> plannerBackend
   });
 
    newAnouncement.save().then(result => {
@@ -110,6 +103,7 @@ function createAnouncement(req, res) {
           "type": result.type,
           "description": result.description,
           "activity": result.activity,
+          "datePlanned": result.datePlanned,
           "participants": result.participants,
         }
     });

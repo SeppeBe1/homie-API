@@ -12,6 +12,7 @@ router.get("/:id",userController.getSpecificUser);
 router.get("/house/:houseId",userController.getUsersHouse);
 
 
+
 // POST /api/vi/users
 
 // router.post("/", userController.createUser);

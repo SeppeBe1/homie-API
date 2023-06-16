@@ -12,7 +12,8 @@ function getUser(req, res) {
           "status":"succes",
           "result": result,
           "data": {
-              "_id": result._id,
+            "userId": result._id, 
+              "userId": result.userId,
               "firstname": result.firstname,
               "lastname": result.lastname,
               "email": result.email,
@@ -72,6 +73,8 @@ function getUser(req, res) {
             "result": results.map(result => ({
               "firstname": result.firstname,
               "lastname": result.lastname,
+              "phone": result.phone,
+              "email": result.email,
               "houseId": result.houseId,
               // Add other properties you want to include
             }))
